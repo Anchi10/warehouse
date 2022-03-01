@@ -1,0 +1,49 @@
+@mixin card-shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+@mixin align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin align-flex-start-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@mixin button {
+  width: 85px;
+  height: 45px;
+  background-color: $primary-color;
+  border-radius: $border-radius-4;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  color: $white;
+  font-size: 16px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: rgb(238, 232, 232);
+    color: $primary-color;
+    border: 2px solid $primary-color;
+  }
+
+  &:focus {
+    background-color: $whitesmoke-color;
+    color: $primary-color;
+    border: 2px solid $primary-color;
+  }
+
+
+}
+
+@mixin button-group-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

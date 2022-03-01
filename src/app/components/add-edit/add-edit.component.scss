@@ -1,0 +1,106 @@
+@import 'src/styles';
+
+input {
+  resize: vertical;
+  padding: 15px;
+  border-radius: 15px;
+  border: 0;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06);
+  border: 2px solid $primary-color;
+
+
+}
+
+.invalid-feedback {
+  color: red;
+  margin-left: 20px;
+
+}
+
+input:read-only {
+  background-color: $lightgray;
+}
+
+button:disabled {
+  background-color: $lightgray;
+
+
+  &:hover {
+    background-color: $lightgray;
+    border: none;
+  }
+}
+
+
+h1 {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  margin: 0 0 0 50px;
+}
+
+label {
+  padding: 5px;
+}
+
+.btn-submit {
+  @include button;
+  font-size: 18px;
+  margin: 5px;
+  width: 100px;
+
+  &:hover {
+    background-color: #4382f7;
+    color: $whitesmoke-color;
+  }
+
+  &:focus {
+    background-color: $whitesmoke-color;
+    color: $primary-color;
+  }
+}
+
+.wrapper {
+  color: #505050;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 50px;
+  margin: 10px;
+}
+
+input.uppercase {
+  text-transform: uppercase;
+}
+
+.btn-group {
+  @include button-group-center;
+}
+
+.btn-cancel {
+  @include button;
+
+  border: 1px solid $primary-color;
+  background-color: whitesmoke;
+  color: $primary-color;
+  margin: 5px;
+  width: 100px;
+  font-size: 18px;
+
+  &:hover {
+    background-color: rgb(250, 85, 85);
+    color: $whitesmoke-color;
+  }
+}
+
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  align-content: space-around;
+  flex-wrap: wrap;
+  padding-bottom: 25px;
+
+  .form-group {
+    margin-top: 20px;
+  }
+}

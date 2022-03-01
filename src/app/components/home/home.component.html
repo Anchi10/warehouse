@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div class="products-number"> {{filterProducts?.length}}</div>
+  <div class="wrap-search">
+    <div class="search">
+       <input type="text" [(ngModel)]="query" class="searchTerm" placeholder="Search by Code"
+        debounce="1000" (change)="queryChange($event)" (keyUp.enter)="queryChange($event)">
+       <button type="submit" class="searchButton">
+         <i class="fa fa-search"></i>
+      </button>
+    </div>
+ </div>
+ <div class="wrapper-content">
+  <div class="wrapper-menu">
+    <div  class="side-menu">
+      <span class="menu-title">Floors:</span>
+      <button *ngFor="let item of listOfFloors; let i = index" #btn class="btn-floor" [ngClass]="selectedFloor === (i+1) ? 'btn-floor--selected': ''" (click)="onFloorClick(i+1)">{{item}}</button>
+    </div>
+    <hr>
+    <div class="side-menu" >
+      <span class="menu-title">Sections:</span>
+     <button class="btn-section" #btn *ngFor="let section of listOfSections; let i = index" (click)="onSectionClick(i+1)"> {{section}}</button>
+    </div>
+  </div>
+<div class="wrapper-products">
+    <div *ngFor="let p of filterProducts; let i = index">
+      <div *ngIf="p"  class="product-items">
+         <button type="button" class="btn-edit" (click)="goTo(p.id)">EDIT</button>
+          <span> Products  {{p.id}}</span>
+          <span class="text-bold">{{p.code}} </span>
+          <span class="text-bold">Location {{p.floor}} floor / {{p.section}} section</span>
+      </div>
+    </div>
+</div>
+</div>
+</div>

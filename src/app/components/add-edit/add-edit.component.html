@@ -1,0 +1,55 @@
+<div class="wrapper">
+<h1 *ngIf="isAddMode">Add Product</h1>
+ <h1 *ngIf="!isAddMode">Edit Product</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" #formProduct="ngForm">
+      <div class="form-row">
+          <div class="form-group">
+              <label>Code</label>
+              <input  [readonly]="!isAddMode" type="text"  formControlName="code" class="form-control" [ngClass]="{ 'uppercase': true, 'is-invalid': submitted && f.code.errors, 'disabled': isAddMode}" />
+              <div *ngIf="submitted && f.code.errors || f.floor.touched || f.floor.dirty" class="invalid-feedback">
+                  <div *ngIf="f.code.errors?.required">Code is required</div>
+                  <div *ngIf="f.code.errors?.pattern">
+                    *Code must contain <br/> is 2-4 letters,
+                    and 4-6 numbers<br/>(must include space between them) </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Quantity</label>
+              <input type="number" formControlName="quantity" min="1" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }" />
+              <div *ngIf="submitted && f.quantity.errors || f.quantity.touched " class="invalid-feedback">
+                  <div *ngIf="f.quantity.errors?.required">Quantity is required</div>
+                  <div *ngIf="f.quantity.errors?.min"> Minimum required number is 1</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Floor</label>
+              <input type="number" min="1"  formControlName="floor" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.floor.errors }" />
+              <div *ngIf="submitted && f.floor.errors || f.floor.touched || f.floor.dirty" class="invalid-feedback">
+                   <div *ngIf="f.floor?.errors?.required">Floor is required</div>
+                  <div *ngIf="f.floor.errors?.min"> Minimum required number is 1</div>
+                  <div *ngIf="f.section.errors?.max">Maximum required number is 3</div>
+              </div>
+          </div>
+          <div class="form-group">
+            <label>Section</label>
+            <input type="number" [min]="1"  formControlName="section" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.section.errors }" />
+            <div *ngIf="submitted && f.section.errors || f.section.touched || f.section.dirty" class="invalid-feedback">
+                <div *ngIf="f.section.errors?.required ">Section is required</div>
+                <div *ngIf="f.section.errors?.min">
+                  Minimum required number is 1
+              </div>
+              <div *ngIf="f.section.errors?.max">
+                Maximum required number is 3
+            </div>
+            </div>
+        </div>
+        <div class="form-group btn-group">
+          <button [disabled]="!(formProduct.form.valid && formProduct.dirty)"  class="btn-submit">
+              <span></span>
+              Save
+          </button>
+          <button class="btn-cancel" routerLink="/">Cancel</button>
+      </div>
+      </div>
+  </form>
+</div>
